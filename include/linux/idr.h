@@ -80,6 +80,8 @@ struct idr {
  * This is what we export.
  */
 
+int __must_check idr_alloc_u32(struct idr *, void *ptr, u32 *nextid,
+				unsigned long max, gfp_t);
 void *idr_find_slowpath(struct idr *idp, int id);
 void idr_preload(gfp_t gfp_mask);
 int idr_alloc(struct idr *idp, void *ptr, int start, int end, gfp_t gfp_mask);
