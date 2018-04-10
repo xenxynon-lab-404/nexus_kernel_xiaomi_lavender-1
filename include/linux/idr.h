@@ -39,6 +39,10 @@ struct idr_layer {
 	};
 };
 
+/* Set the IDR flag and the IDR_FREE tag */
+#define IDR_RT_MARKER	(ROOT_IS_IDR | (__force gfp_t)			\
+					(1 << (ROOT_TAG_SHIFT + IDR_FREE)))
+
 struct idr {
 	struct idr_layer __rcu	*hint;	/* the last layer allocated from */
 	struct idr_layer __rcu	*top;
